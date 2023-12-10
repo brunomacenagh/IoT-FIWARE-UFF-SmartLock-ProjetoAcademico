@@ -180,5 +180,5 @@ Para a base do projeto foram utilizados alguns container’s iniciais:
 Para os fins deste trabalho, foram utilizados dois dispositivos IoT fictícios, que eventualmente serão anexados ao Context Broker. O estado de cada dispositivo pode ser visto na página da web do monitor de dispositivos UltraLight, encontrada em: 
 -  http://localhost:3000/device/monitor
 
-Nota: Mais informações no documento: RelatorioProjetoAcademicoSmartLock.pdf
+Nota: Mais informações no documento: RelatorioProjetoSmartLock.pdf > https://github.com/brunomacenagh/IoT-FIWARE-UFF-SmartLock-ProjetoAcademico/blob/main/3.%20RelatorioProjetoSmartLock.pdf
 
