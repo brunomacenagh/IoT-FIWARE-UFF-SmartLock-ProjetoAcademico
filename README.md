@@ -44,15 +44,15 @@ Sumário do Trabalho
 
 Principais Referências
 
-FIWARE. Installation Guide (Ubuntu 20.04.1). Disponível em: https://github.com/FIWARE/context.Orion-LD/blob/develop/doc/manuals-ld/installation-guide-ubuntu-20.04.1.md. Acesso em: 29 nov. 2023.
-FIWARE. Tutorials: IoT Sensors. Disponível em: https://github.com/fiware/tutorials.iot-sensors. Acesso em: 29 nov. 2023.
+- FIWARE. Installation Guide (Ubuntu 20.04.1). Disponível em: https://github.com/FIWARE/context.Orion-LD/blob/develop/doc/manuals-ld/installation-guide-ubuntu-20.04.1.md. Acesso em: 29 nov. 2023.
+- FIWARE. Tutorials: IoT Sensors. Disponível em: https://github.com/fiware/tutorials.iot-sensors. Acesso em: 29 nov. 2023.
 Canonical Ltd. Ubuntu 20.04 LTS (Focal Fossa). Disponível em: https://releases.ubuntu.com/20.04/. Acesso em: 29 nov. 2023.
-FIWARE. IoT Agent UL. Disponível em: https://fiware-iotagent-ul.readthedocs.io/. Acesso em: 29 nov. 2023.
-FIWARE. Tutorials: IoT Sensors (GitHub Repository). Disponível em: https://github.com/FIWARE/tutorials.IoT-Sensors.git. Acesso em: 29 nov. 2023.
-Docker, Inc. Install Docker Desktop on Ubuntu. Disponível em: https://docs.docker.com/desktop/install/ubuntu/. Acesso em: 29 nov. 2023.
-Docker, Inc. Install Docker Engine on Ubuntu. Disponível em: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository. Acesso em: 29 nov. 2023.
-FIWARE. IoT Agent. Disponível em: https://fiware-tutorials.readthedocs.io/en/latest/iot-agent.html. Acesso em: 29 nov. 2023.
-HVEX. Segurança Cibernética no Setor Elétrico: Medidores Inteligentes. Disponível em: https://conteudo.hvex.com.br/tecnologia/seguranca-cibernetica-no-setor-eletrico-medidores-inteligentes/. Acesso em: 29 nov. 2023.
+- FIWARE. IoT Agent UL. Disponível em: https://fiware-iotagent-ul.readthedocs.io/. Acesso em: 29 nov. 2023.
+- FIWARE. Tutorials: IoT Sensors (GitHub Repository). Disponível em: https://github.com/FIWARE/tutorials.IoT-Sensors.git. Acesso em: 29 nov. 2023.
+- Docker, Inc. Install Docker Desktop on Ubuntu. Disponível em: https://docs.docker.com/desktop/install/ubuntu/. Acesso em: 29 nov. 2023.
+- Docker, Inc. Install Docker Engine on Ubuntu. Disponível em: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository. Acesso em: 29 nov. 2023.
+- FIWARE. IoT Agent. Disponível em: https://fiware-tutorials.readthedocs.io/en/latest/iot-agent.html. Acesso em: 29 nov. 2023.
+- HVEX. Segurança Cibernética no Setor Elétrico: Medidores Inteligentes. Disponível em: https://conteudo.hvex.com.br/tecnologia/seguranca-cibernetica-no-setor-eletrico-medidores-inteligentes/. Acesso em: 29 nov. 2023.
 
 1. Introdução 
 O setor elétrico é um alvo atraente para ataques cibernéticos e acesso indevido, ao ser essencial para o funcionamento da sociedade. As redes de energia elétrica são complexas e interconectadas, o que dificulta proteger contra acessos indevidos (Maia 2023). O setor elétrico brasileiro tem sido alvo de uma série de invasões cibernéticas nos últimos anos. Em 2021, por exemplo, a empresa de energia elétrica Light foi alvo de um ataque que causou uma interrupção no fornecimento de energia para mais de 2 milhões de pessoas no Rio de Janeiro. Segundo Maia (2023) o governo brasileiro tem tomado medidas para melhorar a segurança cibernética do setor elétrico. Em 2021, o governo criou o Centro Nacional de Coordenação de Incidentes Cibernéticos (CNCI), responsável por coordenar a resposta a ataques cibernéticos em infraestruturas críticas, incluindo o setor elétrico.
