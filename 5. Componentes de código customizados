@@ -1,3 +1,5 @@
-autorizados.txt
-docker-compose.yml
-ler_tag_rfid.py
+Componentes de Código Customizados:
+
+docker-compose.yml > https://github.com/brunomacenagh/IoT-FIWARE-UFF-SmartLock-ProjetoAcademico/blob/main/docker-compose.yml
+ler_tag_rfid.py > https://github.com/brunomacenagh/IoT-FIWARE-UFF-SmartLock-ProjetoAcademico/blob/main/ler_tag_rfid.py
+autorizados.txt > https://github.com/brunomacenagh/IoT-FIWARE-UFF-SmartLock-ProjetoAcademico/blob/main/autorizados.txt
