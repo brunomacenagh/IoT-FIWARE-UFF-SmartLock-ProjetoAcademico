@@ -1,0 +1,129 @@
+# Trabalho Pratico FIWARE - INTERNET OF THINGS [IoT]
+# UFF - Universidade Federal Flunimense
+# 2023-2
+# Bruno Macena dos Santos
+# Elenice Costa
+# Rodrigo Oliveira
+#
+version: "3.8"
+services:
+  # Orion is the context broker
+  orion:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/orion:${ORION_VERSION}
+    hostname: orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    networks:
+      - default
+    expose:
+      - "${ORION_PORT}"
+    ports:
+      - "${ORION_PORT}:${ORION_PORT}" # localhost:1026
+    command: -dbhost mongo-db -logLevel DEBUG
+    healthcheck:
+      test: curl --fail -s http://orion:${ORION_PORT}/version || exit 1
+      interval: 5s
+
+  # IoT-Agent is configured for the UltraLight Protocol
+  iot-agent:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/iotagent-ul:${ULTRALIGHT_VERSION}
+    hostname: iot-agent
+    container_name: fiware-iot-agent
+    depends_on:
+      - mongo-db
+    networks:
+      - default
+    expose:
+      - "4041"
+      - "7896"
+    ports:
+      - "4041:4041" # localhost:4041
+      - "7896:7896" # localhost:7896
+    environment:
+      - IOTA_CB_HOST=orion
+      - IOTA_CB_PORT=1026
+      - IOTA_NORTH_PORT=4041
+      - IOTA_REGISTRY_TYPE=mongodb
+      - IOTA_LOG_LEVEL=DEBUG
+      - IOTA_TIMESTAMP=true
+      - IOTA_CB_NGSI_VERSION=v2
+      - IOTA_AUTOCAST=true
+      - IOTA_MONGO_HOST=mongo-db
+      - IOTA_MONGO_PORT=27017
+      - IOTA_MONGO_DB=iotagentul
+      - IOTA_HTTP_PORT=7896
+      - IOTA_PROVIDER_URL=http://iot-agent:4041
+      - IOTA_DEFAULT_RESOURCE=/iot/d
+    healthcheck:
+      interval: 5s
+
+
+  # Tutorial acts as a series of dummy IoT Sensors over HTTP
+  tutorial:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/tutorials.context-provider
+    hostname: iot-sensors
+    container_name: fiware-tutorial
+    depends_on:
+      - orion
+      - iot-agent
+    networks:
+      - default
+    expose:
+      - "3000"
+      - "3001"
+    ports:
+      - "3000:3000" # localhost:3000
+      - "3001:3001" # localhost:3001
+    environment:
+      - "MONGO_URL=mongodb://mongo-db:27017"
+      - "DEBUG=tutorial:*"
+      - "PORT=3000"
+      - "WEB_APP_PORT=${TUTORIAL_APP_PORT}"
+      - "IOTA_HTTP_HOST=iot-agent"
+      - "IOTA_HTTP_PORT=7896"
+      - "DUMMY_DEVICES_PORT=3001"
+      - "DUMMY_DEVICES_TRANSPORT=HTTP"
+      - "DUMMY_DEVICES_API_KEY=4jggokgpepnvsb2uv4s40d59ov"
+      - "CONTEXT_BROKER=http://orion:${ORION_PORT}/v2" 
+      - "OPENWEATHERMAP_KEY_ID=<ADD_YOUR_KEY_ID>"
+      - "TWITTER_CONSUMER_KEY=<ADD_YOUR_CONSUMER_KEY>"
+      - "TWITTER_CONSUMER_SECRET=<ADD_YOUR_CONSUMER_SECRET>"
+  # Database
+  mongo-db:
+    labels:
+      org.fiware: 'tutorial'
+    image: mongo:${MONGO_DB_VERSION}
+    hostname: mongo-db
+    container_name: db-mongo
+    expose:
+      - "${MONGO_DB_PORT}"
+    ports:
+      - "${MONGO_DB_PORT}:${MONGO_DB_PORT}" # localhost:27017
+    networks:
+      - default
+    volumes:
+      - mongo-db:/data
+    healthcheck:
+      test: |
+        host=`hostname --ip-address || echo '127.0.0.1'`; 
+        mongo --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1
+      interval: 5s
+    
+
+networks:
+  default:
+    labels:
+      org.fiware: 'tutorial'
+    ipam:
+      config:
+        - subnet: 172.18.1.0/24
+
+volumes:
+  mongo-db: ~
